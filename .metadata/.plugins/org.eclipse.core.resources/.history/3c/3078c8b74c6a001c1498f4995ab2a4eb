@@ -1,0 +1,8 @@
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task1','2021-12-31',false)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task2','2021-01-1',true)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task3','2021-01-2',false)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task4','2021-02-5',true)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task5','2021-02-7',false)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task6','2021-02-5',true)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task7','2021-02-7',false)
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task8','2021-02-7',false)

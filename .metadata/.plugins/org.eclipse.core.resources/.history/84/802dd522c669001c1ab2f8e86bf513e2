@@ -1,0 +1,5 @@
+package com.projet.todo.repository;
+
+public interface TodoRepository {
+
+}

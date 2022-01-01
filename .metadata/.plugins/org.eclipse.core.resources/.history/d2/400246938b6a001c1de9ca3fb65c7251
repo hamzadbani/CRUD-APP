@@ -1,0 +1,1 @@
+INSERT IGNORE INTO todo (task,date,is_done)  VALUES ('task1','2021-12-31',false)

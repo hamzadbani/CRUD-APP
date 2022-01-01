@@ -1,0 +1,5 @@
+package com.projet.todo;
+
+public class WebConfig {
+
+}

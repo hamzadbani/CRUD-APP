@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Todo Web App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['home']"
+            routerLinkActive="router-link-active"><i class="fa fa-home"></i>Acceuil</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" href="#add"><i class="fa fa-plus"></i>Ajouter</a> -->
+            <button class="btn btn-sm btn-warning mr-1 mt-2"  data-bs-toggle="modal" data-bs-target="#add"
+            >Ajouter</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+  </div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">task</th>
+        <th scope="col">Date</th>
+        <th scope="col">Done</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of listOfTodos;let i = index">
+        <th scope="row">{{todo.id}}</th>
+        <td>{{todo.task}}</td>
+        <td>{{todo.date}}</td>
+        <td>{{todo.done}}</td>
+        <td>
+           <button class="btn btn-sm btn-warning mr-1"  data-bs-toggle="modal" data-bs-target="#editTodo"
+            (click)="editTodo(i)"><i class="fa fa-edit"></i></button> 
+           <button class="btn btn-sm btn-danger mx-2" data-toggle="modal" (click)="confirmDelete(todo.id)"
+           ><i class=" fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form method="post">
+    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter Todo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <div class="form-group">
+            <input required class="form-control"
+            [(ngModel)]="newTodo.task" type="text" placeholder="Task" name="nom" id="task">
+           </div>
+           <div class="form-group my-3">
+            <input required class="form-control" type="date" placeholder="Date" name="date"
+            [(ngModel)]="newTodo.date" id="date">
+           </div>
+          <div class="form-group">
+            Done
+            <input type="checkbox" placeholder="Done" name="done"
+             [(ngModel)]="newTodo.done" id="done">
+          </div>
+          <div class="form-group mt-2"><button (click)="saveTodo()" required class="form-control" class="btn btn-primary">valider</button></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  <!-- Edit Modal -->
+<form method="post">
+  <div class="modal fade" id="editTodo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier Todo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group"><input required class="form-control" [(ngModel)]="TodoToEdit.task" type="text"
+                placeholder="task" name="task" id="task"></div>
+            <div class="form-group my-2"><input required class="form-control" type="date" placeholder="Date" name="date"
+                [(ngModel)]="TodoToEdit.date" id="date"></div>
+            <div class="form-group">
+                  Done
+                  <input type="checkbox" placeholder="Done" name="done"
+                   [(ngModel)]="TodoToEdit.done" id="done">
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" (click)="updateTodo()" data-bs-dismiss="modal" required class="form-control" class="btn btn-primary">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
